@@ -1,0 +1,43 @@
+﻿@using TaskManagement.MyHelpers
+@model Issue
+
+<div class="form-wrapper">
+    @using (Html.BeginForm(Model.Id == Guid.Empty ? "AddedIssue" : "EditedIssue", "Home",
+        FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.Created)
+            
+            @Html.MyTextBox(m => m.Summary, "Summary")
+            @Html.MyTextBox(m => m.Description, "Description")
+            @Html.MyTextBox(m => m.Priority, "Priority")
+            
+            <div style="margin-top: 20px">
+                <div>
+                    @Html.LabelFor(m => m.Project)
+                </div>
+                <div class="col-md-5">
+                    <select value="@Model.ProjectId" asp-for="@Model.ProjectId" asp-items="ViewBag.Projects" style="width: 189px">
+                        <option value="">Nothing</option>
+                    </select>
+                </div>
+            </div>
+            <div style="margin-top: 20px">
+                <div>
+                    @Html.LabelFor(m => m.Employee)
+                </div>
+                <div class="col-md-5">
+                    <select value="@Model.EmployeeId" asp-for="@Model.EmployeeId" asp-items="ViewBag.Employees" style="width: 189px">
+                        <option value="">Nothing</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 40px;">
+            <button type="submit" class="btn btn-success" style="margin-left: 50%; transform: translateX(-50%); width: 200px; background: #0c64e4;">
+                Save
+            </button>
+        </div>
+    }
+</div>

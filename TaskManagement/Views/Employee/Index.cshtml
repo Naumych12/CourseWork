@@ -1,0 +1,51 @@
+﻿@model List<Employee>
+
+@{
+    Layout = "_Layout";
+}
+
+<a asp-controller="Employee" asp-action="AddEmployee"
+   type="button" class="btn btn-lg btn-block  btn-custom " style="background: #0c64e4; width: 160px; position: absolute; left: 20px; top: 95px;">
+    Add New Employee
+</a>
+
+<div class="container mt-5 px-2">
+    <div class="table-responsive">
+    <table class="table table-responsive table-borderless" style="width: 1000px; margin: 0 auto">
+        
+      <thead>
+        <tr class="bg-light">
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+      @foreach (var employee in Model)
+      {
+
+        <tr>
+          <td>@employee.Name</td>
+          <td>@employee.Email</td>
+          <td>@employee.Phone</td>
+          <td style="padding: 0">
+            <a asp-controller="Employee" asp-action="DeleteEmployee" asp-route-id="@employee.Id"
+               type="button" class="btn btn-lg btn-custom ">
+              Delete
+            </a>
+
+            <a asp-controller="Employee" asp-action="EditEmployee" asp-route-id="@employee.Id"
+               type="button" class="btn btn-lg btn-custom " style="background: #0c64e4;">
+              Edit
+            </a>
+          </td>
+        </tr>
+                
+      }
+      </tbody>
+</table>
+  
+  </div>
+    
+</div>

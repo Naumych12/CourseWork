@@ -1,0 +1,21 @@
+@using TaskManagement.MyHelpers
+@model Employee
+
+<div class="form-wrapper">
+    @using (Html.BeginForm(Model.Id == Guid.Empty ? "AddedEmployee" : "EditedEmployee", "Employee",
+        FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            @Html.HiddenFor(m => m.Id)
+            
+            @Html.MyTextBox(m => m.Name, "Name")
+            @Html.MyTextBox(m => m.Email, "Email")
+            @Html.MyTextBox(m => m.Phone, "Phone")
+        </div>
+        <div style="margin-top: 40px;">
+            <button type="submit" class="btn btn-success" style="margin-left: 50%; transform: translateX(-50%); width: 200px; background: #0c64e4;">
+                Save
+            </button>
+        </div>
+    }
+</div>

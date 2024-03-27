@@ -1,0 +1,24 @@
+@model System.Linq.IOrderedEnumerable<TaskManagement.Models.Employee>
+
+<div class="dropdown-container">
+    <a href="#" id="employeesToggle">Tasks by Employee</a>
+    <ul id="employeesList">
+        @foreach (var employee in Model)
+        {
+            <li>
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   asp-route-id="@employee.Id"
+                   asp-route-filterType="Employee"
+                   >@employee.Name</a>
+            </li>
+        }
+    </ul>
+</div>
+
+<script>
+    document.getElementById('employeesToggle').addEventListener('click', function () {
+        let employeesList = document.getElementById('employeesList');
+        employeesList.style.display = (employeesList.style.display === 'none' || employeesList.style.display === '') ? 'block' : 'none';
+    });
+</script>

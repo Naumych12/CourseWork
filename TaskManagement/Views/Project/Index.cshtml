@@ -1,0 +1,51 @@
+﻿@model List<Project>
+
+@{
+    Layout = "_Layout";
+}
+
+<a asp-controller="Project" asp-action="AddProject"
+   type="button" class="btn btn-lg btn-block  btn-custom " style="background: #0c64e4; width: 160px; position: absolute; left: 20px; top: 95px;">
+    Add New Project
+</a>
+
+<div class="container mt-5 px-2">
+    <div class="table-responsive">
+        <table class="table table-responsive table-borderless" style="width: 1000px; margin: 0 auto">
+        
+            <thead>
+            <tr class="bg-light">
+                <th scope="col">Name</th>
+                <th scope="col">Client</th>
+                <th scope="col">Budget</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var project in Model)
+            {
+
+                <tr>
+                    <td>@project.Name</td>
+                    <td>@project.Client</td>
+                    <td>@project.Budget</td>
+                    <td style="padding: 0">
+                        <a asp-controller="Project" asp-action="DeleteProject" asp-route-id="@project.Id"
+                           type="button" class="btn btn-lg btn-custom ">
+                            Delete
+                        </a>
+
+                        <a asp-controller="Project" asp-action="EditProject" asp-route-id="@project.Id"
+                           type="button" class="btn btn-lg btn-custom " style="background: #0c64e4;">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+                
+            }
+            </tbody>
+        </table>
+  
+    </div>
+    
+</div>

@@ -1,0 +1,23 @@
+@model System.Linq.IOrderedEnumerable<TaskManagement.Models.Project>
+
+<div class="dropdown-container">
+    <a href="#" id="projectsToggle">Tasks by Project</a>
+    <ul id="projectsList">
+        @foreach (var project in Model)
+        {
+            <li>
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   asp-route-id="@project.Id"
+                   asp-route-filterType="Project">@project.Name</a>
+            </li>
+        }
+    </ul>
+</div>
+
+<script>
+    document.getElementById('projectsToggle').addEventListener('click', function () {
+        let projectsList = document.getElementById('projectsList');
+        projectsList.style.display = (projectsList.style.display === 'none' || projectsList.style.display === '') ? 'block' : 'none';
+    });
+</script>
