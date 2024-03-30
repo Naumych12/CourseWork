@@ -152,7 +152,7 @@ form {
 }
 
 #projectsToggle::after, #employeesToggle::after {
-  content: '▼';
+  content: '⬇';
   margin-left: 5px;
 }
 
